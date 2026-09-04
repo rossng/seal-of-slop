@@ -1,0 +1,55 @@
+{
+  "name": "seal-of-slop",
+  "version": "0.1.0",
+  "description": "A way to mark your slopcoded projects.",
+  "type": "module",
+  "license": "BlueOak-1.0.0",
+  "packageManager": "pnpm@11.7.0",
+  "sideEffects": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "seal",
+    "sticker",
+    "webgl",
+    "badge",
+    "vibecoded"
+  ],
+  "scripts": {
+    "assets": "node scripts/prepare-assets.js",
+    "build": "tsdown",
+    "dev": "vite demo",
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm run build",
+    "site": "vite build site --outDir ../dist-site --emptyOutDir --base ./",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.1",
+    "sharp": "^0.35.4",
+    "tsdown": "^0.22.14",
+    "typescript": "^5.9.2",
+    "vite": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rossng/seal-of-slop.git"
+  },
+  "homepage": "https://rossng.github.io/seal-of-slop/",
+  "bugs": {
+    "url": "https://github.com/rossng/seal-of-slop/issues"
+  }
+}

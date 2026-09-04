@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>seal-of-slop</title>
+<style>
+  :root { color-scheme: light dark; --ink: #1b1b1f; --paper: #f6f4ef; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #e9e7e2; --paper: #14141a; } }
+  body {
+    /* border-box, or the padding is added to the height and the page always
+       scrolls. dvh, so mobile toolbars do not do the same. */
+    box-sizing: border-box;
+    margin: 0; min-height: 100dvh; background: var(--paper); color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, system-ui, sans-serif;
+    display: grid; place-content: center; justify-items: center; gap: 1rem;
+    padding: 4rem 1.5rem; text-align: center;
+  }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0; letter-spacing: -.02em }
+  p { margin: 0; max-width: 30rem; opacity: .75 }
+  .row { display: flex; gap: 4rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem }
+  figure { margin: 0; display: grid; gap: .9rem; justify-items: center }
+  figcaption { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; opacity: .5 }
+  seal-of-slop:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; border-radius: 50% }
+</style>
+
+<h1>Seal of Slop</h1>
+<p>Move the pointer. The light follows it. Click a seal to lift it off the page and read its note.</p>
+
+<div class="row">
+  <figure>
+    <seal-of-slop
+      size="180"
+      design="seal"
+      text="An agent wrote this page. I discussed the approach with it first, and I read
+the whole diff before I published it. That is not the same as writing it
+myself, and I will not say that it is.
+
+I put the seal here because I would rather tell you than let you guess. You can
+then decide for yourself how much of it to trust.
+
+Use it as a toy. It works in the browsers that I tested, and I have not tested
+the others. There are no tests, there is no support, and the next version may
+break it."
+    ></seal-of-slop>
+    <figcaption>design="seal"</figcaption>
+  </figure>
+
+  <figure>
+    <seal-of-slop
+      size="180"
+      design="sticker"
+      text="I did not read this one. I described what I wanted, let the model write the
+code, and looked at the result in the browser. I cannot tell you what most of
+the lines do.
+
+I made it because code that is written this quickly should say so. A page that
+tells you is more use than a page that hides it.
+
+Do not assume that the code is correct. It is a demo, and not a dependency."
+    ></seal-of-slop>
+    <figcaption>design="sticker"</figcaption>
+  </figure>
+</div>
+
+<script type="module">
+  import '../src/index.ts'
+</script>
