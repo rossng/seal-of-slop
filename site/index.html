@@ -23,14 +23,26 @@
   th, td { text-align: left; padding: .5rem .75rem .5rem 0; border-bottom: 1px solid var(--rule); vertical-align: top }
   th { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .6 }
   footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: .875rem; opacity: .7 }
-  /* The seal sits in the corner of the window on a wide screen, and in the
-     flow of the page on a narrow one, where a fixed seal covers the text. */
-  .seal { display: block; margin: 3rem auto 0 }
+  /* The seal sits in the corner of the window on a wide screen, and under the
+     heading on a narrow one, where a fixed seal covers the text. */
+  .seal { display: block; margin: 0 0 2.5rem }
   @media (min-width: 60rem) { .seal { position: fixed; right: 2rem; bottom: 2rem; margin: 0 } }
   seal-of-slop:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; border-radius: 50% }
 </style>
 
 <h1>The Seal of Slop</h1>
+
+<div class="seal">
+  <seal-of-slop
+    size="140"
+    design="seal"
+    text="An agent wrote this page, and the library that it advertises. I iterated on it quite a bit but I didn't review the rendering implementation.
+
+I added the seal here otherwise this project would be laughably hypocritical.
+
+This project is provided as-is with no guarantees. But it's simple enough that I wouldn't expect anything too mad to happen."
+  ></seal-of-slop>
+</div>
 
 <p>Slopcoding is okay sometimes. Maybe you just have a funny idea you wanted to try out? Perhaps you need a prototype of something just to see if the concept works? Or maybe it's the only way you can scale yourself enough to build something?</p>
 
@@ -89,18 +101,6 @@ There are no tests and no support. Use it as a toy."
   <a href="https://www.npmjs.com/package/seal-of-slop">Package on npm</a> &middot;
   Blue Oak Model License 1.0.0
 </footer>
-
-<div class="seal">
-  <seal-of-slop
-    size="140"
-    design="seal"
-    text="An agent wrote this page, and the library that it advertises. I iterated on it quite a bit but I didn't review the rendering implementation.
-
-I added the seal here otherwise this project would be laughably hypocritical.
-
-This project is provided as-is with no guarantees. But it's simple enough that I wouldn't expect anything too mad to happen."
-  ></seal-of-slop>
-</div>
 
 <script type="module">
   import '../src/index.ts'
