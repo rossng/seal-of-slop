@@ -24,15 +24,34 @@ jobs:
           node-version: 24
           cache: pnpm
       # Trusted publishing needs npm >= 11.5.1, which is newer than the npm
-      # that ships with Node. changeset publish shells out to npm, not pnpm,
-      # because pnpm cannot do OIDC publishing yet.
+      # that ships with Node.
       - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
+
+      # Opens (or updates) a pull request that bumps the version and writes the
+      # changelog. It does not publish: the trusted publisher is allowed to
+      # stage a release, and not to release it, so the last step is done by a
+      # human with a second factor.
       - uses: changesets/action@v1
+        id: changesets
         with:
           version: pnpm run version
-          publish: pnpm run release
           title: "Release"
           commit: "Version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stage the release on npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "seal-of-slop@$version" version >/dev/null 2>&1; then
+            echo "seal-of-slop@$version is already published. Nothing to stage."
+            exit 0
+          fi
+          pnpm run build
+          # Staged, not published. Run `npm stage list seal-of-slop` to see it,
+          # then `npm stage approve seal-of-slop@$version` to release it.
+          npm stage publish
+          git tag "v$version"
+          git push origin "v$version"

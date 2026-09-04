@@ -84,9 +84,21 @@ pnpm changeset   # pick major/minor/patch, write one line about the change
 
 Commit the generated file in `.changeset/` with your change. When it lands on
 `main`, the Release workflow opens a pull request that bumps the version and
-writes the changelog. Merge that pull request and the same workflow publishes
-the package to npm, using OIDC trusted publishing, so there is no npm token in
-the repository.
+writes the changelog. Merge that pull request and the workflow builds the
+package and *stages* it on npm, using OIDC trusted publishing, so there is no
+npm token in the repository.
+
+A staged version is not downloadable yet. Release it yourself, with a second
+factor:
+
+```sh
+npm stage list seal-of-slop      # see what is waiting
+npm stage approve seal-of-slop@0.1.1
+```
+
+Or approve it on npmjs.com. To throw it away instead, `npm stage reject`. The
+trusted publisher is only allowed to stage, so a workflow that is tampered with
+still cannot put a version in front of anyone.
 
 ## Licence
 
