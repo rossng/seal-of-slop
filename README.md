@@ -8,8 +8,7 @@ So I made a way to openly communicate that something is vibecoded. A little wax 
 
 That's all. Who knows if this is a good idea.
 
-See it on the [project page](https://www.rossng.eu/seal-of-slop/), which
-wears one.
+[See it in action](https://www.rossng.eu/seal-of-slop/)
 
 ## Install
 
