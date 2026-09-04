@@ -1,6 +1,6 @@
 {
   "name": "seal-of-slop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A way to mark your slopcoded projects.",
   "type": "module",
   "license": "BlueOak-1.0.0",
