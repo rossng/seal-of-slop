@@ -31,8 +31,7 @@
     "prepack": "pnpm run build",
     "site": "vite build site --outDir ../dist-site --emptyOutDir --base ./",
     "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.1",
