@@ -1,0 +1,111 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Seal of Slop</title>
+<meta name="description" content="A way to mark your slopcoded projects." />
+<style>
+  :root { color-scheme: light dark; --ink: #1b1b1f; --paper: #f6f4ef; --rule: #0002; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #e9e7e2; --paper: #14141a; --rule: #fff2; } }
+  body {
+    box-sizing: border-box; margin: 0 auto; max-width: 42rem;
+    padding: 4rem 1.5rem 8rem;
+    background: var(--paper); color: var(--ink);
+    font: 16px/1.7 ui-sans-serif, system-ui, sans-serif;
+  }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 2rem; letter-spacing: -.02em }
+  h2 { margin: 3rem 0 .75rem; font-size: 1.25rem; letter-spacing: -.01em }
+  p, li { margin: 0 0 1rem }
+  a { color: inherit }
+  code { font: .875em/1 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--rule); padding: .15em .35em; border-radius: .25em }
+  pre { background: var(--rule); padding: 1rem; border-radius: .5rem; overflow-x: auto }
+  pre code { background: none; padding: 0; line-height: 1.6 }
+  table { border-collapse: collapse; width: 100%; margin: 0 0 1rem }
+  th, td { text-align: left; padding: .5rem .75rem .5rem 0; border-bottom: 1px solid var(--rule); vertical-align: top }
+  th { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .6 }
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: .875rem; opacity: .7 }
+  /* The seal sits in the corner of the window on a wide screen, and in the
+     flow of the page on a narrow one, where a fixed seal covers the text. */
+  .seal { display: block; margin: 3rem auto 0 }
+  @media (min-width: 60rem) { .seal { position: fixed; right: 2rem; bottom: 2rem; margin: 0 } }
+  seal-of-slop:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; border-radius: 50% }
+</style>
+
+<h1>The Seal of Slop</h1>
+
+<p>Slopcoding is okay sometimes. Maybe you just have a funny idea you wanted to try out? Perhaps you need a prototype of something just to see if the concept works? Or maybe it's the only way you can scale yourself enough to build something?</p>
+
+<p>But it's also frustrating to be presented with something that implicitly claims to be 100% human work but also has all the tell-tale signs. The purple gradients. The weird little smallcaps subtitles. The Dramatic. Staccato. Prose.</p>
+
+<p>So I made a way to openly communicate that something is vibecoded. A little wax seal (or sticker if you prefer) to put on your page. You write a personal statement, explaining how you made the thing and how much it should be trusted.</p>
+
+<p>That's all. Who knows if this is a good idea.</p>
+
+<h2>Install</h2>
+
+<pre><code>npm install seal-of-slop</code></pre>
+
+<h2>Use</h2>
+
+<pre><code>&lt;script type="module"&gt;
+  import 'seal-of-slop'
+&lt;/script&gt;
+
+&lt;seal-of-slop
+  size="128"
+  design="seal"
+  text="An agent wrote this page. I read all of the code before I published it,
+but I did not write it.
+
+There are no tests and no support. Use it as a toy."
+&gt;&lt;/seal-of-slop&gt;</code></pre>
+
+<p>When you import the package, it registers the <code>&lt;seal-of-slop&gt;</code> element. The element has three attributes, and no other configuration.</p>
+
+<table>
+  <thead><tr><th>Attribute</th><th>Default</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>size</code></td><td><code>128</code></td><td>The width and the height of the seal, in CSS pixels.</td></tr>
+    <tr><td><code>design</code></td><td><code>seal</code></td><td>Use <code>seal</code> for pressed wax. Use <code>sticker</code> for printed vinyl.</td></tr>
+    <tr><td><code>text</code></td><td>none</td><td>Your personal statement about the slopcoded project.</td></tr>
+  </tbody>
+</table>
+
+<p>If you do not set <code>text</code>, the seal is decorative only.</p>
+
+<p>Use CSS to position the seal. The element is an <code>inline-block</code> element of the size that you set. To affix the seal in a corner of the window, set <code>position: fixed</code> and two offsets.</p>
+
+<h2>What to write in the text</h2>
+
+<p>The seal tells the reader that an AI agent wrote the page. So you should write the personal statement yourself! Consider:</p>
+
+<ol>
+  <li><strong>How much of the code did you read?</strong> Did you read none of it? Did you discuss the design with the agent first? Did you review every line? Say which.</li>
+  <li><strong>Why did you make it?</strong> Or, if an AI wrote it, why is it still interesting?</li>
+  <li><strong>How correct is the code, and what support will you give?</strong> Say if it is ready for production, if you will fix bugs, or if it is only a toy.</li>
+</ol>
+
+<footer>
+  <a href="https://github.com/rossng/seal-of-slop">Source on GitHub</a> &middot;
+  <a href="https://www.npmjs.com/package/seal-of-slop">Package on npm</a> &middot;
+  Blue Oak Model License 1.0.0
+</footer>
+
+<div class="seal">
+  <seal-of-slop
+    size="140"
+    design="seal"
+    text="An agent wrote this page, and the library that it advertises. I discussed the
+approach with it first, and I read the whole diff before I published it. That
+is not the same as writing it myself, and I will not say that it is.
+
+The seal is here because a page that sells a seal of slop should wear one.
+
+Use it as a toy. It works in the browsers that I tested, and I have not tested
+the others. There are no tests, there is no support, and the next version may
+break it."
+  ></seal-of-slop>
+</div>
+
+<script type="module">
+  import '../src/index.ts'
+</script>
